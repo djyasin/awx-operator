@@ -1,14 +1,10 @@
 ---
-- name: Check for presence of web and task deployments
+- name: Check for presence of Deployment
   k8s_info:
     api_version: v1
     kind: Deployment
-    name: "{{ item }}"
-    namespace: "{{ ansible_operator_meta.namespace }}"
-  loop: 
-     - "{{ ansible_operator_meta.namespace }}-web"
-     - "{{ ansible_operator_meta.namespace }}-task"
-  register: tower_deployment
+    name: "{{ ansible_operator_meta.name }}"
+    namespace: "{{ ansible_operator_meta.namespace-web }}"
 
 # Just execute deployment steps when auto_upgrade is true or when no deployment exists
 - name: Start installation
