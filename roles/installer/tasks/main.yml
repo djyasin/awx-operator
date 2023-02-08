@@ -11,3 +11,5 @@
   include_tasks: install.yml
   when: (tower_deployment['resources'] | length > 0 and auto_upgrade | bool ) or (tower_deployment['resources'] | length == 0)
   register: tower_deployment
+
+  #Test
